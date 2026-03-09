@@ -1,0 +1,19 @@
+name : Matrix-Strategy-test
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  Matrix-strategy:
+    runs-on: ubuntu-latest
+
+    strategy:
+        matrix:
+            python-version: [3.10, 3.11, 3.12]
+
+    steps:
+        - name: Maximum version
+          run : |  
+            echo "Running versions: ${{ matrix.python-version }}"        
+
