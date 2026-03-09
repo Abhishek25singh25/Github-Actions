@@ -16,7 +16,7 @@ jobs:
 
             exclude:
                 - os : windows-latest
-                  pyhton-version: 3.10
+                  python-version: 3.10
 
 
     steps:
