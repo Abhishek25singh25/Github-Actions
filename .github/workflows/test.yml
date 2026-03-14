@@ -1,0 +1,22 @@
+name: Test-CI
+
+on:
+  workflow_dispatch
+
+jobs:
+    Run-ci:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
+
+          - name: Make the script executable
+            run: chmod +x test-script.sh
+
+          - name: Run the script
+            run: ./test-script.sh
+            
+            
+
+
+
