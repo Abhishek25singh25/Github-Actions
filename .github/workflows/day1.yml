@@ -1,0 +1,22 @@
+name: Day-1-Practice
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  print-hello-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Print message
+        run: echo "Hello from github actions"
+
+      - name: Github repo
+        run: |
+          echo "Repository Name: ${{ github.event.repository.name }}"
+
+
+
