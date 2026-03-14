@@ -1,0 +1,20 @@
+name: cache-demo
+
+on: workflow_dispatch
+
+jobs:
+  cache-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache files
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache
+          key: my-cache
+
+      - name: Install something
+        run: echo "Installing dependencies..."
