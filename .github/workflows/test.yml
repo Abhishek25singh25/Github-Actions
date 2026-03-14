@@ -14,8 +14,8 @@ jobs:
             run: chmod +x test-script.sh
 
           - name: Run the script
-            run: ./test-script.sh
-            
+            run: ./test-script.
+
             
 
 
