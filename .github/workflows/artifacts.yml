@@ -1,25 +1,22 @@
-name: Artifacts
+name: Day-1-Practice
 
 on:
   push:
     branches: [main]
 
 jobs:
-  generate-artifacts:
+  print-hello-name:
     runs-on: ubuntu-latest
     steps:
-        - name: Checkout Repository
-          uses: actions/checkout@v4
+      - name: Checkout the repository
+        uses: actions/checkout@v4
 
-        - name: Generate a report file
-          run: |
-            echo "CI test report" > report.txt
-            echo "Pipeline tested succesfully" > report.txt
+      - name: Print message
+        run: echo "Hello from github actions"
 
-        - name: upload artifacts
-          uses: actions/upload-artifact@v4
-          with:
-            name: ci-report
-            path: report.txt
+      - name: Github repo
+        run: |
+          echo "Repository Name: ${{ github.event.repository.name }}"
+
 
 
