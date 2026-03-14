@@ -1,9 +1,7 @@
 name: Runner Test
 
 on:
-  push:
-    branches: [main]
-
+  workflow_dispatch
 jobs:
   ubuntu-job:
     runs-on: ubuntu-latest

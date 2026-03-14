@@ -1,0 +1,24 @@
+name: Docker
+on:
+  workflow_dispatch:
+
+jobs:
+    Docker-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Use Secret as Environment Variable
+              env:
+                SECRET_MSG: ${{ secrets.MY_SECRET_MESSAGE }}
+              run: |
+                echo "Using secret as environment variable"
+                if [ -n "$SECRET_MSG" ]; then
+                echo "Secret loaded successfully"
+                else
+                echo "Secret not found"
+                fi  
+
+
+

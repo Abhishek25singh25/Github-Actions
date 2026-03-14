@@ -1,0 +1,16 @@
+name: repo-info
+
+on:
+  workflow_dispatch
+    
+
+jobs:
+    repo-information:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: code checkout
+              uses: actions/checkout@v4
+
+            - name: List the files
+              run : ls

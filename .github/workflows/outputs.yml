@@ -1,8 +1,7 @@
 name: Outputs yml
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch
 
 jobs:
 
