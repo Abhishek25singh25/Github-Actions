@@ -23,12 +23,12 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Tag Docker image
-        run: docker tag my-app:v1 ${{ secrets.DOCKER_USERNAME }}/github-actions-practice:latest
+        run: docker tag "my-app:v1" "${{ secrets.DOCKER_USERNAME }}/github-actions-practice:latest"
 
       - name: Tag image with commit SHA
-        run: docker tag my-app:v1 ${{ secrets.DOCKER_USERNAME }}/github-actions-practice:sha-${{ github.sha }}
+        run: docker tag "my-app:v1" "${{ secrets.DOCKER_USERNAME }}/github-actions-practice:sha-${{ github.sha }}"
 
       - name: Push Docker images
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/github-actions-practice:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/github-actions-practice:sha-${{ github.sha }}
+          docker push "${{ secrets.DOCKER_USERNAME }}/github-actions-practice:latest"
+          docker push "${{ secrets.DOCKER_USERNAME }}/github-actions-practice:sha-${{ github.sha }}"
