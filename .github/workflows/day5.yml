@@ -1,9 +1,7 @@
 name: Day 5 Workflow
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   env-practice:

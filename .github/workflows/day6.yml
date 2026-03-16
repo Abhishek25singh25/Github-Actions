@@ -1,8 +1,7 @@
 name: Day-6-yml
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   context-info:
