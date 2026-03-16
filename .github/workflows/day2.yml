@@ -1,0 +1,20 @@
+name: Day-2-yml
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build a pipeline
+        run: echo "Building the project"  
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing a pipeline
+        run: echo "Running tests"
+        
+          
