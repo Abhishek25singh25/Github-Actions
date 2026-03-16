@@ -1,0 +1,15 @@
+name: Docker-publish
+on:
+  push:
+    branches: [main]
+
+jobs:
+  docker-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: build the image
+        run: docker build -t my-app:v1 .
