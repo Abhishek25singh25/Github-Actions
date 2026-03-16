@@ -1,0 +1,32 @@
+name: Day-8-yml
+
+on: 
+  push:
+    branches:
+      - main
+      - feature
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Linting the pipeline
+        run: echo "Linting the code"
+
+  build:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Building the code
+        run: echo "Building the project"
+
+  deploy:
+    if: github.ref_name == 'main'
+    needs: [lint, build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploying the project
+        run: echo "Deploying to production"
