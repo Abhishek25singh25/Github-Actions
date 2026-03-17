@@ -2,12 +2,15 @@ name: check-pr
 
 on:
   pull_request:
+
     branches:
       - main
     types:
       - opened
       - synchronize
 
+  schedule:
+      - cron: "0 0 * * *" 
 jobs:
   pr-validate:
     runs-on: ubuntu-latest

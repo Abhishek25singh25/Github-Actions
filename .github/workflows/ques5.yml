@@ -1,0 +1,17 @@
+name: Ci tool
+on:
+  workflow_dispatch
+jobs:
+  ci-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Printing pipeline
+        run: echo "Running ci checks"
+    
+
+
+  
+      

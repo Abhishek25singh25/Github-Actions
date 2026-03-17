@@ -1,0 +1,17 @@
+name: check_preinstalled_tools
+
+on:
+  workflow_dispatch
+    
+jobs:
+    Check_tools:
+        runs-on: ubuntu:latest
+
+        steps:
+            - name: Check preinstalled tool
+              run: |
+                docker --version
+                python --version
+                node --version
+                git --version
+

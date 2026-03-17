@@ -1,0 +1,10 @@
+name: Day-4-yml
+on:
+  workflow_dispatch:
+
+jobs:
+  manual-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Manual pipeline
+        run: echo "Manual pipeline triggered"

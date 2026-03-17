@@ -1,0 +1,23 @@
+name: Day-3-yml
+on:
+  workflow_dispatch
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: linting the code
+        run: echo "Linting code"
+        
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build the code
+        run: echo "Building projects"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing
+        run: echo "Running tests"        
+          

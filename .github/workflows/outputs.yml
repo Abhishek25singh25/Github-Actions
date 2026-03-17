@@ -1,0 +1,24 @@
+name: Outputs yml
+
+on:
+  workflow_dispatch
+
+jobs:
+
+  Set-output:
+    runs-on: ubuntu-latest
+    outputs:
+      date: ${{ steps.setdate.outputs.date }}
+
+    steps:
+      - name: Setting output
+        id: setdate
+        run: echo "date=$(date)" >> $GITHUB_OUTPUT
+
+  Read-output:
+    runs-on: ubuntu-latest
+    needs: Set-output
+
+    steps:
+      - name: Reading output
+        run: echo "Today's date is ${{ needs.Set-output.outputs.date }}"

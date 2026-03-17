@@ -1,0 +1,19 @@
+name: Run greet
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  greet-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Run the action
+        uses: ./.github/actions/setup-and-greet
+        with:
+          name: "Abhishek"
+          language: "en"

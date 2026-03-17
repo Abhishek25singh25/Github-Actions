@@ -1,0 +1,50 @@
+on:
+  workflow_call:
+    inputs:
+      app_name:
+        description: "Application name"
+        required: true
+        type: string
+      environment:
+        description: "Deployment environment"
+        required: true
+        type: string
+        default: staging
+
+    secrets:
+      docker_token:
+        required: true
+
+    outputs:
+      build_version:
+        description: "Version of the build"
+        value: ${{ jobs.build.outputs.version }}
+
+                
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    outputs:
+      version: ${{ steps.setversion.outputs.version }}
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: set build version
+        id: setversion
+        run: echo "version=v1.0-${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+
+      - name: Building the application
+        run: |
+          echo "Building ${{ inputs.app_name }} for ${{ inputs.environment }}"
+
+      - name: Verify the docker token
+        run: |
+          if [ -n "${{ secrets.docker_token }}" ]; then
+            echo "Docker token is set: true"
+          else
+            echo "Docker token is set: false"
+          fi
