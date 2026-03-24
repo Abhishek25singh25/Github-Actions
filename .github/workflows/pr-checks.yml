@@ -1,0 +1,54 @@
+name: Pr-check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  
+  file-size-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Check file size
+        uses: pelotech/github-action-file-size-checker@v0.1.2
+        with:
+          
+          max_file_size_kib: '1024'
+
+
+  branch-name-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Readint the branch
+        run: echo "Checking branch name :${{ github.head_ref }}"
+
+      - name: Validate branch name
+        run: |
+          BRANCH="${{ github.head_ref }}"
+
+          if [[ "$BRANCH" != feature/* && "$BRANCH" != fix/* && "$BRANCH" != docs/* ]]; then
+            echo "Invalid branch name"
+            echo "Allowed: feature/*, fix/*, docs/*"
+            exit 1
+          fi
+
+          echo "Branch name is valid"
+
+  pr-body-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reads the pr-body
+        run: echo "The pr body is :${{ github.event.pull_request.body }}"
+
+      - name: Check pr description
+        run: |
+           PR_BODY="${{ github.event.pull_request.body }}"
+           if [ -z "$PR_BODY" ]; then
+             echo "Warning: PR description is empty"
+           else
+             echo "Description is present"  
+           fi
